@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Office Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-iphone4.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-ipad3.png" />
+<script type="text/javascript">
+    $(function() {
+    // When a control is pressed
+    $("#control").change(function() {
+        // post the form values via AJAX…
+        var postdata = {control: $("input:radio[name=Control]:checked", "#control").val()} ;
+        $.post('/click', postdata, function(data) {
+            // and set the title with the result
+            $("#response").html(data['response']) ;
+            // and reset the controls
+            $("#control").reset() ;
+           });
+        return false ;
+        });
+    });
+</script>
+</head>
+    <body>
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h1>
+            Office Control
+        </h1>
+    </div>
+    <div data-role="content">
+        <div id="control" data-role="fieldcontain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+                <legend>
+                    Control
+                </legend>
+                <input id="radio1" name="Control" value="Apple Up" type="radio">
+                <label for="radio1">
+                    Up
+                </label>
+                <input id="radio2" name="Control" value="Apple Down" type="radio">
+                <label for="radio2">
+                    Down
+                </label>
+            </fieldset>
+        </div>
+        <h5 id="response">
+            Current state unknown.
+        </h5>
+    </div>
+</div>
+    </body>
+</html>
