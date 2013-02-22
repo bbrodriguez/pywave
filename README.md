@@ -13,3 +13,4 @@ Use record_codes.py from hackpump to save a JSON file containing your named IR C
 
 Put appropriate icons in /media/icons if you want to save this as a webapp on your iOS or other tough device.
 
+The provided AppleRemote.json may not work for you if your Apple Computer is tied to a specific remote handset, it is provided for completeness only.
